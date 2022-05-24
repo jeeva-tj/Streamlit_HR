@@ -54,7 +54,7 @@ from plotly.graph_objs import *
 # df_SA=df_SA.sort_values(by=['Month_Num'])
 # df_SA=df_SA.round(decimals =2)
 
-df_SA = pd.read_csv (r'C:\Users\Jeevanandam\Desktop\HR Analytics\HR-Dashboard\df_SA.csv')
+df_SA = pd.read_csv (r'df_SA.csv')
 rev=df_SA['Revenue'].sum()
 cp=df_SA['Cost Price'].sum()
 ep=df_SA['Expense'].sum()
@@ -225,7 +225,7 @@ def page2_st():
     st.markdown('-------------------------------------------------')
 
 def page3_st():
-    df_salary = pd.read_csv (r'C:\Users\Jeevanandam\Desktop\HR Analytics\HR-Dashboard\salary_sheet.csv')
+    df_salary = pd.read_csv (r'salary_sheet.csv')
     st.markdown("<h2 style='text-align: center; color: black;'>Salary Analysis</h2>", unsafe_allow_html=True)
     st.markdown('-------------------------------------------------')
 
@@ -325,7 +325,7 @@ def page3_st():
         st.plotly_chart(fig)
 
 def page4_st():
-    df_salary = pd.read_csv (r'C:\Users\Jeevanandam\Desktop\HR Analytics\HR-Dashboard\salary_sheet.csv')
+    df_salary = pd.read_csv (r'salary_sheet.csv')
     st.markdown("<h2 style='text-align: center; color: black;'>Training</h2>", unsafe_allow_html=True)
     st.markdown('-------------------------------------------------')
     segm1, segm2, segm3, segm4, segm5 = st.columns(5)
@@ -423,7 +423,7 @@ def page5_st():
     st.markdown("")
     st.markdown("")
 
-    df_leave = pd.read_csv (r'C:\Users\Jeevanandam\Desktop\HR Analytics\HR-Dashboard\leave.csv')
+    df_leave = pd.read_csv (r'leave.csv')
     df_op=df_leave[df_leave['Organization level']=="Operational"]
     df_op=df_op.groupby(["Gender"],as_index=False)['Organization level'].count()
     df_hi=df_leave[df_leave['Organization level']=="High - Level"]
