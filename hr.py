@@ -1,5 +1,7 @@
-from cgitb import text
-from itertools import groupby
+# from cgitb import text
+# from itertools import groupby
+# from math import fabs
+# from turtle import width
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -13,13 +15,13 @@ from plotly.graph_objs import *
 st.set_page_config(layout="wide")
 @st.cache(allow_output_mutation=True)
 def cached_data():
-    df_SA = pd.read_csv (r'df_SA.csv')
-    df_salary = pd.read_csv (r'salary_sheet.csv')
-    df_leave1 = pd.read_csv (r'leave.csv')
-    df_hire2=pd.read_csv(r'hires.csv')
-    df_st = pd.read_csv (r'Stay vs Jump.csv')
-    df_attri = pd.read_csv (r'Attrition.csv')
-    df_ter = pd.read_csv (r'Termination.csv')
+    df_SA = pd.read_csv (r'C:\Users\Jeevanandam\Desktop\HR Analytics\HR-Dashboard\df_SA.csv')
+    df_salary = pd.read_csv (r'C:\Users\Jeevanandam\Desktop\HR Analytics\HR-Dashboard\salary_sheet.csv')
+    df_leave1 = pd.read_csv (r'C:\Users\Jeevanandam\Desktop\HR Analytics\HR-Dashboard\leave.csv')
+    df_hire1=pd.read_csv(r'C:\Users\Jeevanandam\Desktop\HR Analytics\HR-Dashboard\hires.csv')
+    df_st = pd.read_csv (r'C:\Users\Jeevanandam\Desktop\HR Analytics\HR-Dashboard\Stay vs Jump.csv')
+    df_attri = pd.read_csv (r'C:\Users\Jeevanandam\Desktop\HR Analytics\HR-Dashboard\Attrition.csv')
+    df_ter = pd.read_csv (r'C:\Users\Jeevanandam\Desktop\HR Analytics\HR-Dashboard\Termination.csv')
     return df_SA,df_salary,df_leave1,df_hire1,df_st,df_attri,df_ter
 
 df_SA,df_salary,df_leave1,df_hire1,df_st,df_attri,df_ter=cached_data()
@@ -635,7 +637,7 @@ def page5_st():
 
         st.markdown("<h4 style='text-align: center; color: black;'>Hires Vs Leavers</h4>", unsafe_allow_html=True)
 
-        df_hire2=df_hire1
+        # df_hire=pd.read_csv(r'C:\Users\Jeevanandam\Desktop\HR Analytics\HR-Dashboard\hires.csv')
         df_hire=df_hire1.groupby(["QuarterYear"],as_index=False)["Hire"].sum()
         df_leave=df_leave1.groupby(["QuarterYear","Date","Business unit"],as_index=False)["Termination Id"].count()
         df_leave=df_leave.groupby(["QuarterYear","Business unit"],as_index=False).sum()
