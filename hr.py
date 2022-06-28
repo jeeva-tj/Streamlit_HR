@@ -17,7 +17,7 @@ st.set_page_config(layout="wide")
 def cached_data():
     df_SA = pd.read_csv (r'df_SA.csv')
     df_salary = pd.read_csv (r'salary_sheet.csv')
-    df_leave2 = pd.read_csv (r'leave.csv')
+    df_leave1 = pd.read_csv (r'leave.csv')
     df_hire1=pd.read_csv(r'hires.csv')
     df_st = pd.read_csv (r'Stay vs Jump.csv')
     df_attri = pd.read_csv (r'Attrition.csv')
@@ -672,7 +672,7 @@ def page5_st():
 #         fig1.update_yaxes(showgrid=False)
 #         fig1.update_traces(marker_color="#3EC1CD")
 #         st.plotly_chart(fig1)
-          st.dataframe(df_leave2)
+          st.dataframe(df_leave1)
 
 def page6_st():
 
