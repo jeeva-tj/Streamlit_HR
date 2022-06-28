@@ -2,6 +2,7 @@
 # from itertools import groupby
 # from math import fabs
 # from turtle import width
+from pandas import read_excel
 import streamlit as st
 import pandas as pd
 import numpy as np
