@@ -672,7 +672,8 @@ def page5_st():
 #         fig1.update_yaxes(showgrid=False)
 #         fig1.update_traces(marker_color="#3EC1CD")
 #         st.plotly_chart(fig1)
-          st.dataframe(df_leave1)
+          df_leave2=df_leave1
+          st.dataframe(df_leave2)
 
 def page6_st():
 
