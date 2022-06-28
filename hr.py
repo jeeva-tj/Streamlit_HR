@@ -18,13 +18,14 @@ def cached_data():
     df_SA = pd.read_csv (r'df_SA.csv')
     df_salary = pd.read_csv (r'salary_sheet.csv')
 #     df_leave1 = pd.read_csv (r'leave.csv')
+    df_chkleave = pd.read_csv (r'leave.csv')
     df_hire1=pd.read_csv(r'hires.csv')
     df_st = pd.read_csv (r'Stay vs Jump.csv')
     df_attri = pd.read_csv (r'Attrition.csv')
     df_ter = pd.read_csv (r'Termination.csv')
-    return df_SA,df_salary,df_leave1,df_hire1,df_st,df_attri,df_ter
+    return df_SA,df_salary,df_chkleave,df_hire1,df_st,df_attri,df_ter
 
-df_SA,df_salary,df_leave1,df_hire1,df_st,df_attri,df_ter=cached_data()
+df_SA,df_salary,df_chkleave,df_hire1,df_st,df_attri,df_ter=cached_data()
 
 def page1_st(): 
     rev=df_SA['Revenue'].sum()
@@ -673,7 +674,7 @@ def page5_st():
 #         fig1.update_traces(marker_color="#3EC1CD")
 #         st.plotly_chart(fig1)
           df_leave2=df_leave1
-          st.dataframe(df_leave2)
+          st.dataframe(df_chkleave)
 
 def page6_st():
 
