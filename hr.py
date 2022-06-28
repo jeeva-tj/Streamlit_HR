@@ -557,8 +557,8 @@ def page5_st():
         st.markdown("")  
         st.markdown("")  
         st.markdown("<h4 style='text-align: center; color: black;'>Leavers Trend By Gender</h4>", unsafe_allow_html=True)
-
-        df_tr=df_leave1.groupby(["Year","QuarterYear","Gender","Business unit"],as_index=False)["Termination Id"].count()
+        df_leave2=df_leave1
+        df_tr=df_leave2.groupby(["Year","QuarterYear","Gender","Business unit"],as_index=False)["Termination Id"].count()
         df_tr=df_tr[df_tr["Business unit"].isin(bu)]  
         df_tr=df_tr.groupby(["Gender","QuarterYear"],as_index=False)["Termination Id"].sum()  
         df_tr=df_tr.sort_values(by="QuarterYear")
