@@ -15,13 +15,13 @@ from plotly.graph_objs import *
 st.set_page_config(layout="wide")
 @st.cache(allow_output_mutation=True)
 def cached_data():
-    df_SA = pd.read_csv (r'C:\Users\Jeevanandam\Desktop\HR Analytics\HR-Dashboard\df_SA.csv')
-    df_salary = pd.read_csv (r'C:\Users\Jeevanandam\Desktop\HR Analytics\HR-Dashboard\salary_sheet.csv')
-    df_leave1 = pd.read_csv (r'C:\Users\Jeevanandam\Desktop\HR Analytics\HR-Dashboard\leave.csv')
-    df_hire1=pd.read_csv(r'C:\Users\Jeevanandam\Desktop\HR Analytics\HR-Dashboard\hires.csv')
-    df_st = pd.read_csv (r'C:\Users\Jeevanandam\Desktop\HR Analytics\HR-Dashboard\Stay vs Jump.csv')
-    df_attri = pd.read_csv (r'C:\Users\Jeevanandam\Desktop\HR Analytics\HR-Dashboard\Attrition.csv')
-    df_ter = pd.read_csv (r'C:\Users\Jeevanandam\Desktop\HR Analytics\HR-Dashboard\Termination.csv')
+    df_SA = pd.read_csv (r'df_SA.csv')
+    df_salary = pd.read_csv (r'salary_sheet.csv')
+    df_leave1 = pd.read_csv (r'leave.csv')
+    df_hire1=pd.read_csv(r'hires.csv')
+    df_st = pd.read_csv (r'Stay vs Jump.csv')
+    df_attri = pd.read_csv (r'Attrition.csv')
+    df_ter = pd.read_csv (r'Termination.csv')
     return df_SA,df_salary,df_leave1,df_hire1,df_st,df_attri,df_ter
 
 df_SA,df_salary,df_leave1,df_hire1,df_st,df_attri,df_ter=cached_data()
