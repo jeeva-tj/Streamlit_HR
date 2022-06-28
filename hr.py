@@ -448,231 +448,231 @@ def page4_st():
 def page5_st():
 
 
-    st.markdown("<h2 style='text-align: center; color: black;'>Termination Analysis</h2>", unsafe_allow_html=True)
-    st.markdown('-------------------------------------------------')
-    st.markdown("")
-    st.markdown("")
+#     st.markdown("<h2 style='text-align: center; color: black;'>Termination Analysis</h2>", unsafe_allow_html=True)
+#     st.markdown('-------------------------------------------------')
+#     st.markdown("")
+#     st.markdown("")
 
 
-    df_op=df_leave1.groupby(["Gender","Business unit","Date","Organization level"],as_index=False)['Termination Id'].count()
-    df_op=df_op.sort_values(by="Date")
+#     df_op=df_leave1.groupby(["Gender","Business unit","Date","Organization level"],as_index=False)['Termination Id'].count()
+#     df_op=df_op.sort_values(by="Date")
 
-    sec1,sec2,sec3=st.columns(3)
-    seg1,seg2,seg3=st.columns(3)
-    se1,se2,se3=st.columns(3)
+#     sec1,sec2,sec3=st.columns(3)
+#     seg1,seg2,seg3=st.columns(3)
+#     se1,se2,se3=st.columns(3)
 
-    with sec1:
-        op=df_leave1["Termination Id"].count()
-        st.markdown("<h4 style='text-align: center; color: black;'>Total Termination</h4>", unsafe_allow_html=True)
-        st.markdown("<h4 style='text-align: center; color: black;'>"+str(op)+"</h4>", unsafe_allow_html=True)
+#     with sec1:
+#         op=df_leave1["Termination Id"].count()
+#         st.markdown("<h4 style='text-align: center; color: black;'>Total Termination</h4>", unsafe_allow_html=True)
+#         st.markdown("<h4 style='text-align: center; color: black;'>"+str(op)+"</h4>", unsafe_allow_html=True)
 
 
-    with sec3:
-        op=round(df_leave1["Termination Id"].count()/1024)
-        st.markdown("<h4 style='text-align: center; color: black;'>Average Leaver per Day</h4>", unsafe_allow_html=True)
-        st.markdown("<h4 style='text-align: center; color: black;'>"+str(op)+"</h4>", unsafe_allow_html=True)
+#     with sec3:
+#         op=round(df_leave1["Termination Id"].count()/1024)
+#         st.markdown("<h4 style='text-align: center; color: black;'>Average Leaver per Day</h4>", unsafe_allow_html=True)
+#         st.markdown("<h4 style='text-align: center; color: black;'>"+str(op)+"</h4>", unsafe_allow_html=True)
     
-    with seg1:
-        st.markdown("")
-        st.markdown("")
-        st.markdown("")
-        st.markdown("")
-        st.markdown("")
-        st.markdown("")
-        st.markdown("")
-        st.markdown("")
-        s_date=st.selectbox("Start Date",df_op["Date"].tolist())
+#     with seg1:
+#         st.markdown("")
+#         st.markdown("")
+#         st.markdown("")
+#         st.markdown("")
+#         st.markdown("")
+#         st.markdown("")
+#         st.markdown("")
+#         st.markdown("")
+#         s_date=st.selectbox("Start Date",df_op["Date"].tolist())
 
 
-    with seg2:
-        st.markdown("")
-        st.markdown("")
-        st.markdown("")
-        st.markdown("")
-        st.markdown("")
-        st.markdown("")
-        st.markdown("")
-        st.markdown("")
+#     with seg2:
+#         st.markdown("")
+#         st.markdown("")
+#         st.markdown("")
+#         st.markdown("")
+#         st.markdown("")
+#         st.markdown("")
+#         st.markdown("")
+#         st.markdown("")
 
-        e_date=st.selectbox("End Date",df_op["Date"].tolist())
-
-
-
-    with seg3:
-        st.markdown("")
-        st.markdown("")
-        st.markdown("")
-        st.markdown("")
-        st.markdown("")
-        st.markdown("")
-        st.markdown("")
-        st.markdown("")
-        bu= st.multiselect("Select Business Unit",list(set(df_op["Business unit"].tolist())),list(set(df_op["Business unit"].tolist())))
-        df_op=df_op[(df_op['Date'] > s_date) & (df_op['Date'] < e_date) ]
-    df_op=df_op.sort_values(by="Date")
-    st.markdown("-----------------------------------")  
+#         e_date=st.selectbox("End Date",df_op["Date"].tolist())
 
 
-    with se1:
-        st.markdown("")
-        st.markdown("")
-        st.markdown("")
-        st.markdown("")
-        st.markdown("")
 
-        st.markdown("")
-        st.markdown("")
-        st.markdown("")
-        st.markdown("<h4 style='text-align: center; color: black;'>Leavers By Job Level</h4>", unsafe_allow_html=True)
-        df_jl= df_op.groupby(["Gender","Organization level"],as_index=False)["Termination Id"].sum()
+#     with seg3:
+#         st.markdown("")
+#         st.markdown("")
+#         st.markdown("")
+#         st.markdown("")
+#         st.markdown("")
+#         st.markdown("")
+#         st.markdown("")
+#         st.markdown("")
+#         bu= st.multiselect("Select Business Unit",list(set(df_op["Business unit"].tolist())),list(set(df_op["Business unit"].tolist())))
+#         df_op=df_op[(df_op['Date'] > s_date) & (df_op['Date'] < e_date) ]
+#     df_op=df_op.sort_values(by="Date")
+#     st.markdown("-----------------------------------")  
 
-        colours = {
-                "Female": "#0C3B5D",
-                "Male": "#3EC1CD"
-            }
-        fig = px.histogram(
-                df_jl,
-                x="Organization level",
-                y="Termination Id",
-                color="Gender",
-                barmode="group",
-                orientation="v",
-                color_discrete_map=colours,text_auto=True
-            )
-        fig.update_xaxes(showgrid=False)
-        fig.update_yaxes(showgrid=False)
-        fig.update_layout(height=500,width=600,xaxis_title="Organization Level",
-            yaxis_title="Terminations")
+
+#     with se1:
+#         st.markdown("")
+#         st.markdown("")
+#         st.markdown("")
+#         st.markdown("")
+#         st.markdown("")
+
+#         st.markdown("")
+#         st.markdown("")
+#         st.markdown("")
+#         st.markdown("<h4 style='text-align: center; color: black;'>Leavers By Job Level</h4>", unsafe_allow_html=True)
+#         df_jl= df_op.groupby(["Gender","Organization level"],as_index=False)["Termination Id"].sum()
+
+#         colours = {
+#                 "Female": "#0C3B5D",
+#                 "Male": "#3EC1CD"
+#             }
+#         fig = px.histogram(
+#                 df_jl,
+#                 x="Organization level",
+#                 y="Termination Id",
+#                 color="Gender",
+#                 barmode="group",
+#                 orientation="v",
+#                 color_discrete_map=colours,text_auto=True
+#             )
+#         fig.update_xaxes(showgrid=False)
+#         fig.update_yaxes(showgrid=False)
+#         fig.update_layout(height=500,width=600,xaxis_title="Organization Level",
+#             yaxis_title="Terminations")
             
-        st.plotly_chart(fig)
+#         st.plotly_chart(fig)
 
-    with se2:
+#     with se2:
 
-        st.markdown("")
-        st.markdown("")  
-        st.markdown("")
-        st.markdown("")  
-        st.markdown("")
-        st.markdown("")  
-        st.markdown("")  
-        st.markdown("")  
-        st.markdown("<h4 style='text-align: center; color: black;'>Leavers Trend By Gender</h4>", unsafe_allow_html=True)
-        df_leave2=df_leave1
-        df_tr=df_leave2.groupby(["Year","QuarterYear","Gender","Business unit"],as_index=False)["Termination Id"].count()
-        df_tr=df_tr[df_tr["Business unit"].isin(bu)]  
-        df_tr=df_tr.groupby(["Gender","QuarterYear"],as_index=False)["Termination Id"].sum()  
-        df_tr=df_tr.sort_values(by="QuarterYear")
-        colours = {
-                "Female": "#0C3B5D",
-                "Male": "#3EC1CD"
-            }
-        df = px.data.gapminder().query("continent=='Oceania'")
-        fig = px.line(df, y=df_tr["Termination Id"].tolist(), x=df_tr["QuarterYear"].tolist(), color=df_tr["Gender"].tolist(),color_discrete_map=colours)
-        fig.update_layout(height=450,width=600,xaxis_title="Quarter",
-            yaxis_title="Terminations")
-        fig.update_xaxes(showgrid=False)
-        fig.update_yaxes(showgrid=False)
-        st.plotly_chart(fig)
-    with se3:
+#         st.markdown("")
+#         st.markdown("")  
+#         st.markdown("")
+#         st.markdown("")  
+#         st.markdown("")
+#         st.markdown("")  
+#         st.markdown("")  
+#         st.markdown("")  
+#         st.markdown("<h4 style='text-align: center; color: black;'>Leavers Trend By Gender</h4>", unsafe_allow_html=True)
+#         df_tr=df_leave1.groupby(["Year","QuarterYear","Gender","Business unit"],as_index=False)["Termination Id"].count()
+#         df_tr=df_tr[df_tr["Business unit"].isin(bu)]  
+#         df_tr=df_tr.groupby(["Gender","QuarterYear"],as_index=False)["Termination Id"].sum()  
+#         df_tr=df_tr.sort_values(by="QuarterYear")
+#         colours = {
+#                 "Female": "#0C3B5D",
+#                 "Male": "#3EC1CD"
+#             }
+#         df = px.data.gapminder().query("continent=='Oceania'")
+#         fig = px.line(df, y=df_tr["Termination Id"].tolist(), x=df_tr["QuarterYear"].tolist(), color=df_tr["Gender"].tolist(),color_discrete_map=colours)
+#         fig.update_layout(height=450,width=600,xaxis_title="Quarter",
+#             yaxis_title="Terminations")
+#         fig.update_xaxes(showgrid=False)
+#         fig.update_yaxes(showgrid=False)
+#         st.plotly_chart(fig)
+#     with se3:
 
-        st.markdown("")
-        st.markdown("")  
-        st.markdown("")
-        st.markdown("")  
-        st.markdown("")
-        st.markdown("")  
-        st.markdown("")
-        st.markdown("")
+#         st.markdown("")
+#         st.markdown("")  
+#         st.markdown("")
+#         st.markdown("")  
+#         st.markdown("")
+#         st.markdown("")  
+#         st.markdown("")
+#         st.markdown("")
 
-        st.markdown("<h4 style='text-align: center; color: black;'>Leavers By Business Unit</h4>", unsafe_allow_html=True)
+#         st.markdown("<h4 style='text-align: center; color: black;'>Leavers By Business Unit</h4>", unsafe_allow_html=True)
 
-        colours = {
-                "Business unit": "#0C3B5D",
+#         colours = {
+#                 "Business unit": "#0C3B5D",
     
-            }
-        df_op=df_leave1.groupby(["Business unit"],as_index=False)["Termination Id"].count()
-        df_op["% of leavers"]=round((df_op["Termination Id"]/df_op["Termination Id"].sum())*100)
-        df_op=df_op[df_op["Business unit"].isin(bu)]  
-        df_op=df_op.sort_values(by="% of leavers")
-        fig1 = go.Figure(go.Bar(
-                    y=df_op['Business unit'].tolist(),
-                    x=df_op['% of leavers'].tolist(),
-                    orientation='h',text=df_op["Termination Id"]))
-        fig1.update_layout(height=500,width=600,xaxis_title="Terminations",
-            yaxis_title="Business Unit")
-        fig1.update_traces(marker_color="#3EC1CD")
-        fig1.update_xaxes(showgrid=False)
-        fig1.update_yaxes(showgrid=False)
-        st.plotly_chart(fig1)
-    with se1:
-        st.markdown("")
-        st.markdown("")
+#             }
+#         df_op=df_leave1.groupby(["Business unit"],as_index=False)["Termination Id"].count()
+#         df_op["% of leavers"]=round((df_op["Termination Id"]/df_op["Termination Id"].sum())*100)
+#         df_op=df_op[df_op["Business unit"].isin(bu)]  
+#         df_op=df_op.sort_values(by="% of leavers")
+#         fig1 = go.Figure(go.Bar(
+#                     y=df_op['Business unit'].tolist(),
+#                     x=df_op['% of leavers'].tolist(),
+#                     orientation='h',text=df_op["Termination Id"]))
+#         fig1.update_layout(height=500,width=600,xaxis_title="Terminations",
+#             yaxis_title="Business Unit")
+#         fig1.update_traces(marker_color="#3EC1CD")
+#         fig1.update_xaxes(showgrid=False)
+#         fig1.update_yaxes(showgrid=False)
+#         st.plotly_chart(fig1)
+#     with se1:
+#         st.markdown("")
+#         st.markdown("")
 
-        st.markdown("<h4 style='text-align: center; color: black;'>Leavers By Age Category</h4>", unsafe_allow_html=True)
+#         st.markdown("<h4 style='text-align: center; color: black;'>Leavers By Age Category</h4>", unsafe_allow_html=True)
 
-        df_op=df_leave1.groupby(["Age Range","Business unit","Gender"],as_index=False)["Termination Id"].count()
-        df_op=df_op[df_op["Business unit"].isin(bu)] 
-        df_op=df_op.groupby(["Age Range","Gender"],as_index=False)["Termination Id"].sum()
-        df_op=df_op.sort_values(by='Age Range')
+#         df_op=df_leave1.groupby(["Age Range","Business unit","Gender"],as_index=False)["Termination Id"].count()
+#         df_op=df_op[df_op["Business unit"].isin(bu)] 
+#         df_op=df_op.groupby(["Age Range","Gender"],as_index=False)["Termination Id"].sum()
+#         df_op=df_op.sort_values(by='Age Range')
 
-        colours = {
-                "Male": "#0C3B5D",
-                "Female": "#3EC1CD"
-            }
-        fig1 = px.bar(df_op, x="Age Range", y="Termination Id", color='Gender',orientation='v',color_discrete_map=colours,text=df_op["Termination Id"])
+#         colours = {
+#                 "Male": "#0C3B5D",
+#                 "Female": "#3EC1CD"
+#             }
+#         fig1 = px.bar(df_op, x="Age Range", y="Termination Id", color='Gender',orientation='v',color_discrete_map=colours,text=df_op["Termination Id"])
 
 
-        fig1.update_layout(height=500,width=600,xaxis_title="Age Category",
-            yaxis_title="Terminations")
-        fig1.update_xaxes(showgrid=False)
-        fig1.update_yaxes(showgrid=False)       
-        st.plotly_chart(fig1)
+#         fig1.update_layout(height=500,width=600,xaxis_title="Age Category",
+#             yaxis_title="Terminations")
+#         fig1.update_xaxes(showgrid=False)
+#         fig1.update_yaxes(showgrid=False)       
+#         st.plotly_chart(fig1)
 
-    with se2:
-        st.markdown("")
-        st.markdown("")      
-        st.markdown("")
-        st.markdown("")      
-        st.markdown("")      
+#     with se2:
+#         st.markdown("")
+#         st.markdown("")      
+#         st.markdown("")
+#         st.markdown("")      
+#         st.markdown("")      
 
-        st.markdown("<h4 style='text-align: center; color: black;'>Hires Vs Leavers</h4>", unsafe_allow_html=True)
+#         st.markdown("<h4 style='text-align: center; color: black;'>Hires Vs Leavers</h4>", unsafe_allow_html=True)
 
-        # df_hire=pd.read_csv(r'C:\Users\Jeevanandam\Desktop\HR Analytics\HR-Dashboard\hires.csv')
-        df_hire=df_hire1.groupby(["QuarterYear"],as_index=False)["Hire"].sum()
-        df_leave=df_leave1.groupby(["QuarterYear","Date","Business unit"],as_index=False)["Termination Id"].count()
-        df_leave=df_leave.groupby(["QuarterYear","Business unit"],as_index=False).sum()
-        df_merg=pd.merge(df_leave,df_hire,on="QuarterYear",how='inner')
-        df_merg=df_merg[df_merg["Business unit"].isin(bu)] 
-        df_merg=df_merg.groupby(["QuarterYear"],as_index=False).sum() 
-        colours = {
-                'Termination Id': "#0C3B5D",
-                'Hire': "#3EC1CD"
-            }
-        fig = px.line(df_merg, x='QuarterYear', y=['Termination Id', 'Hire'],color_discrete_map=colours)    
-        fig.update_layout(height=450,width=650,xaxis_title="Quarter Year",
-            yaxis_title="Hires and Leavers")
-        fig.update_xaxes(showgrid=False)
-        fig.update_yaxes(showgrid=False)
-        st.plotly_chart(fig)
-    with se3:
-        st.markdown("")
-        st.markdown("")
-        st.markdown("<h4 style='text-align: center; color: black;'>Leavers By Location</h4>", unsafe_allow_html=True)
+#         # df_hire=pd.read_csv(r'C:\Users\Jeevanandam\Desktop\HR Analytics\HR-Dashboard\hires.csv')
+#         df_hire=df_hire1.groupby(["QuarterYear"],as_index=False)["Hire"].sum()
+#         df_leave=df_leave1.groupby(["QuarterYear","Date","Business unit"],as_index=False)["Termination Id"].count()
+#         df_leave=df_leave.groupby(["QuarterYear","Business unit"],as_index=False).sum()
+#         df_merg=pd.merge(df_leave,df_hire,on="QuarterYear",how='inner')
+#         df_merg=df_merg[df_merg["Business unit"].isin(bu)] 
+#         df_merg=df_merg.groupby(["QuarterYear"],as_index=False).sum() 
+#         colours = {
+#                 'Termination Id': "#0C3B5D",
+#                 'Hire': "#3EC1CD"
+#             }
+#         fig = px.line(df_merg, x='QuarterYear', y=['Termination Id', 'Hire'],color_discrete_map=colours)    
+#         fig.update_layout(height=450,width=650,xaxis_title="Quarter Year",
+#             yaxis_title="Hires and Leavers")
+#         fig.update_xaxes(showgrid=False)
+#         fig.update_yaxes(showgrid=False)
+#         st.plotly_chart(fig)
+#     with se3:
+#         st.markdown("")
+#         st.markdown("")
+#         st.markdown("<h4 style='text-align: center; color: black;'>Leavers By Location</h4>", unsafe_allow_html=True)
 
-        # df_leave = pd.read_csv (r'C:\Users\Jeevanandam\Desktop\HR Analytics\HR-Dashboard\leave.csv')
-        # df_leave=df_leave1
-        df_p=df_leave1.groupby(["Business unit","Country"],as_index=False)["Termination Id"].count()
-        df_p=df_p[df_p["Business unit"].isin(bu)] 
-        df_p=df_p.groupby(["Country"],as_index=False)["Termination Id"].sum()
-        df_p=df_p.sort_values(by="Termination Id") 
+#         # df_leave = pd.read_csv (r'C:\Users\Jeevanandam\Desktop\HR Analytics\HR-Dashboard\leave.csv')
+#         # df_leave=df_leave1
+#         df_p=df_leave1.groupby(["Business unit","Country"],as_index=False)["Termination Id"].count()
+#         df_p=df_p[df_p["Business unit"].isin(bu)] 
+#         df_p=df_p.groupby(["Country"],as_index=False)["Termination Id"].sum()
+#         df_p=df_p.sort_values(by="Termination Id") 
 
-        fig1 = px.bar(df_p, y='Termination Id', x='Country',text=df_p["Termination Id"])
-        fig1.update_layout(height=500,width=600,xaxis_title="Country",
-            yaxis_title="Terminations")
-        fig1.update_xaxes(showgrid=False)
-        fig1.update_yaxes(showgrid=False)
-        fig1.update_traces(marker_color="#3EC1CD")
-        st.plotly_chart(fig1)
+#         fig1 = px.bar(df_p, y='Termination Id', x='Country',text=df_p["Termination Id"])
+#         fig1.update_layout(height=500,width=600,xaxis_title="Country",
+#             yaxis_title="Terminations")
+#         fig1.update_xaxes(showgrid=False)
+#         fig1.update_yaxes(showgrid=False)
+#         fig1.update_traces(marker_color="#3EC1CD")
+#         st.plotly_chart(fig1)
+          st.dataframe(df_leave1)
 
 def page6_st():
 
