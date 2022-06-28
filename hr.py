@@ -1,7 +1,7 @@
-# from cgitb import text
-# from itertools import groupby
-# from math import fabs
-# from turtle import width
+from cgitb import text
+from itertools import groupby
+from math import fabs
+from turtle import width
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -24,7 +24,7 @@ def cached_data():
     df_ter = pd.read_csv (r'Termination.csv')
     return df_SA,df_salary,df_leave1,df_hire1,df_st,df_attri,df_ter
 
-df_SA,df_salary,df_chkleave,df_hire1,df_st,df_attri,df_ter=cached_data()
+df_SA,df_salary,df_leave1,df_hire1,df_st,df_attri,df_ter=cached_data()
 
 def page1_st(): 
     rev=df_SA['Revenue'].sum()
